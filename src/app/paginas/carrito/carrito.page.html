@@ -1,74 +1,62 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Carrito de Compras</ion-title>
+    <ion-title>Carrito de Compras
+      <ion-card-subtitle style="display: right; margin-top: 5px;">Total: $ {{total | number:'1.2-2'}}
+      </ion-card-subtitle>
+    </ion-title>
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
+    <!-- <ion-card-subtitle style="display: right;">Total: $ {{total | number:'1.2-2'}}&nbsp;Items: {{cantItems}}</ion-card-subtitle> -->
+    <ion-icon *ngIf="cantItems != 0" (click)="facturar()" slot="end" name="cash" color="success" style="margin-right: 3%; width: 50px; height: 25px;"></ion-icon>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-grid>
+  <ion-grid *ngFor="let item of itemsCarrito; let i = index">
     <ion-row style="text-align: center;" justify-content-center>
       <ion-col padding size-xs="12" size-sm="12" size-md="12" size-lg="12" align-self-stretch>
         <ion-card>
           <ion-row style="text-align: center;">
             <ion-card-title
               style="text-align: center; margin-left: auto; margin-right: auto; margin-top: 10px; margin-bottom: 10px;">
-              RIBEYE SUPERMAMADORXD aaaaaaaaaaaaaa aaaaaaaaaaaa
+              {{item.nomPro}}
             </ion-card-title>
           </ion-row>
           <ion-row>
             <ion-col>
-              <img src="https://virtualwebergasgrill.com/wp-content/uploads/2015/05/img_4548-1024.jpg"
+              <img src={{item.imgPro}}
                 style="height: auto; width: auto; margin-top: auto; margin-bottom: auto; margin-left: 10px" />
             </ion-col>
             <ion-col style="margin-top: auto; margin-bottom: auto;">
-  
+
               <br>
-              <b> <span style="margin-left: 10px;">Precio: 10.00$</span></b> <br>
+              <b> <span style="margin-left: 10px;">Precio: $ {{item.puPro | number:'1.2-2'}}</span></b> <br>
               <br>
-              <b> <span style="margin-left: 10px;">Cantidad: 20</span></b>
+              <b> <span style="margin-left: 10px;">Cantidad: {{item.catProNavigation}}</span></b>
               <br>
-              <b> <span style="margin-left: 10px;">Total: {{ 20 * 10 }}</span></b>
-  
+              <br>
+              <ion-button color="success" [disabled]="item.catProNavigation <= 1" (click)="restProduct(i)">
+                <ion-icon name="remove-outline"></ion-icon>
+              </ion-button>
+              <ion-button color="success" [disabled]="item.catProNavigation >= item.stockPro" (click)="addProduct(i)">
+                <ion-icon name="add-outline"></ion-icon>
+              </ion-button>
+              <br>
+              <br>
+              <b> <span style="margin-left: 10px;">Subtotal: $ {{item.puPro * item.catProNavigation |
+                  number:'1.2-2'}}</span></b>
+              <br>
+              <br>
+              <ion-button color="danger" (click)="eliminar(i)">
+                <ion-icon name="trash-outline"></ion-icon>
+              </ion-button>
             </ion-col>
           </ion-row>
         </ion-card>
       </ion-col>
     </ion-row>
   </ion-grid>
-  
-  
-  <ion-grid>
-    <ion-row style="text-align: center;" justify-content-center>
-      <ion-col padding size-xs="12" size-sm="12" size-md="12" size-lg="12" align-self-stretch>
-        <ion-card>
-          <ion-row style="text-align: center;">
-            <ion-card-title
-              style="text-align: center; margin-left: auto; margin-right: auto; margin-top: 10px; margin-bottom: 10px;">
-              Cheetos
-            </ion-card-title>
-          </ion-row>
-          <ion-row>
-            <ion-col>
-              <img src="https://i.pinimg.com/originals/d4/7a/40/d47a4074b5f3222fd3cc85d1b96a178f.png"
-                style="height: auto; width: auto; margin-top: auto; margin-bottom: auto; margin-left: 10px" />
-            </ion-col>
-            <ion-col style="margin-top: auto; margin-bottom: auto;">
-  
-              <br>
-              <b> <span style="margin-left: 10px;">Precio: 10 $</span></b> <br>
-              <br>
-              <b> <span style="margin-left: 10px;"> Cantidad: 15</span></b>
-              <br>
-              <b> <span style="margin-left: 10px;">Total: {{ 15 * 10 }}</span></b>
-  
-            </ion-col>
-          </ion-row>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+
 
 </ion-content>

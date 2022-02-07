@@ -2,6 +2,7 @@ export interface Usuario {
     usuario1 : string,
     password : string,
     nombre : string,
-    id : number,
+    idCli : number, //porque si xd
     tipo : string
 }
+

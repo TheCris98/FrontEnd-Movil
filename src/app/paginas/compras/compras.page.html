@@ -6,45 +6,15 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <ion-list>
+  <ion-list *ngFor="let element of listaFacturas; let i = index">
     <ion-item>
       <ion-avatar slot="start">
-        <h1>1</h1>
+        <h1>{{i+1}}</h1>
       </ion-avatar>
-      <ion-label>
-        <h2>Pokémon Yellow</h2>
-        <h3>Legendario</h3>
-        <p>Antiguo</p>
-      </ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-avatar slot="start">
-        <h1>1</h1>
-      </ion-avatar>
-      <ion-label>
-        <h2>Pokémon Yellow</h2>
-        <h3>Legendario</h3>
-        <p>Antiguo</p>
-      </ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-avatar slot="start">
-        <h1>1</h1>
-      </ion-avatar>
-      <ion-label>
-        <h2>Pokémon Yellow</h2>
-        <h3>Legendario</h3>
-        <p>Antiguo</p>
-      </ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-avatar slot="start">
-        <h1>1</h1>
-      </ion-avatar>
-      <ion-label>
-        <h2>Pokémon Yellow</h2>
-        <h3>Legendario</h3>
-        <p>Antiguo</p>
+      <ion-label style="text-align: right;">
+        <h2>{{element.fecFact | date : 'd/MM/yyyy, h:mm a'}}</h2>
+        <h3>Total: $ {{element.total | number: "1.2-2"}}</h3>
       </ion-label>
     </ion-item>
   </ion-list>
+</ion-content>

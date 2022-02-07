@@ -63,16 +63,18 @@
             <ion-col style="margin-top: auto; margin-bottom: auto;">
 
               <br>
-              <b> <span style="margin-left: 10px;">Precio: {{ element.puPro | number:'1.2-2'}} $</span></b> <br>
+              <b> <span style="margin-left: 10px;">Precio: $ {{ element.puPro | number:'1.2-2'}}</span></b> <br>
+              <br>
+              <b> <span style="margin-left: 10px;">Stock Actual: {{ element.stockPro }}</span></b> <br>
               <br>
               <b> <span style="margin-left: 10px;"> Cantidad: </span></b>
-              <input type="number" style="width: 100px;"><br>
-
+              <input [(ngModel)]="element.catProNavigation" type="number" style="width: 50px; text-align: center;"><br>
+              <b> <span style="margin-left: 10px;">Subtotal: $ {{ element.puPro * element.catProNavigation| number:'1.2-2'}}</span></b> <br>
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col>
-              <ion-button>Agregar al carrito</ion-button>
+              <ion-button [disabled]="element.stockPro < element.catProNavigation || element.catProNavigation == 0 || element.catProNavigation == null" (click)="agregarAlCarrito(element)">Agregar al carrito</ion-button>
             </ion-col>
           </ion-row>
         </ion-card>
