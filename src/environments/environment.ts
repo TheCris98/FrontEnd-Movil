@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  urlGlobal: 'https://localhost:44376/'
+  urlGlobal: 'https://lpbdmarket.azurewebsites.net/'
 };
 
 /*

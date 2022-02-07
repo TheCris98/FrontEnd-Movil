@@ -90,6 +90,7 @@ export class FacturaPage implements OnInit {
           estPro: data.estPro
         }
       }
+      data.catProNavigation = null
       this.listaDetalle.push(this.detalle);
     }
 
