@@ -115,7 +115,7 @@ export class FacturaPage implements OnInit {
 
   async makeText(message: string) {
     const toast = await this.toastController.create({
-      message: "Se ha retirado de tu carrito",
+      message: message,
       duration: 2000
     });
     toast.present();

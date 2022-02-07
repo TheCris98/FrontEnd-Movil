@@ -66,18 +66,21 @@ export class CarritoPage implements OnInit {
     //push al cookie
     localStorage.setItem('carrito', JSON.stringify(this.itemsCarrito));//actualizar cookies
     this.cargarCarrito();
-    const toast = await this.toastController.create({
-      message: "Se ha retirado de tu carrito",
-      duration: 2000
-    });
-    toast.present();
+    this.makeText("Se ha retirado el producto.")
   }
 
   facturar() {
     this.router.navigate(['/carrito/factura'])
   }
-
+  async makeText(message: string) {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 2000
+    });
+    toast.present();
+  }
   vaciar(){
+    this.makeText("El carrito se ha vaciado.");
     localStorage.removeItem('carrito');
     this.cargarCarrito();
   }
