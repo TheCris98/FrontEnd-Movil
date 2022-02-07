@@ -13,7 +13,7 @@ import { AlertController } from '@ionic/angular';
 export class CarritoPage implements OnInit {
 
   cantidad: number = 0;
-  itemsCarrito: any
+  itemsCarrito: any;
   total = 0;
   cantItems = 0;
   constructor(
@@ -39,7 +39,6 @@ export class CarritoPage implements OnInit {
     //Pushh a la cookie con los nuevos valores añadidos
     localStorage.setItem('carrito', JSON.stringify(this.itemsCarrito));//actualizar cookies
 
-    console.log(this.itemsCarrito)
     this.CalculoTotal()
   }
 
@@ -77,6 +76,26 @@ export class CarritoPage implements OnInit {
   facturar() {
     this.router.navigate(['/carrito/factura'])
   }
+
+  vaciar(){
+    localStorage.removeItem('carrito');
+    this.cargarCarrito();
+  }
+
+  /*
+  import { ToastController } from '@ionic/angular';
+
+  public toastController: ToastController,
+
+  const toast = await this.toastController.create({
+      message: "Se ha retirado de tu carrito",
+      duration: 2000
+    });
+    toast.present();
+  
+  
+  
+  */
 
 
   //import { AlertController } from '@ionic/angular';

@@ -24,7 +24,6 @@ export class TiendaPage implements OnInit {
   obtenerCategorias() {
     this._apiCategorias.getCategorias().subscribe(data => {
       this.listaCategorias = data;
-      console.log(this.listaCategorias);
     });
   }
 

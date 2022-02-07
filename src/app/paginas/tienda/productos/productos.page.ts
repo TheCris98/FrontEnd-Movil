@@ -33,7 +33,6 @@ export class ProductosPage implements OnInit {
     const id = this.ruta.snapshot.paramMap.get('id')
     this._productoService.getProductos(id).subscribe(data => {
       this.listaProductos = data;
-      console.log(this.listaProductos);
     });
   }
 

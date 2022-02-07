@@ -44,6 +44,6 @@ export class LoginService {
   logout() {
     localStorage.removeItem('auth');
     this.usuarioSubject.next(null!)
-    window.location.reload()
+    //window.location.reload();
   }
 }

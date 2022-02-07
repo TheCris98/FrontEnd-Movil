@@ -1,18 +1,28 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>Carrito de Compras
-      <ion-card-subtitle style="display: right; margin-top: 5px;">Total: $ {{total | number:'1.2-2'}}
+      <ion-card-subtitle *ngIf="itemsCarrito.length>0" style="display: right; margin-top: 5px;">Total: $ {{total |
+        number:'1.2-2'}}
       </ion-card-subtitle>
     </ion-title>
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
     <!-- <ion-card-subtitle style="display: right;">Total: $ {{total | number:'1.2-2'}}&nbsp;Items: {{cantItems}}</ion-card-subtitle> -->
-    <ion-icon *ngIf="cantItems != 0" (click)="facturar()" slot="end" name="cash" color="success" style="margin-right: 3%; width: 50px; height: 25px;"></ion-icon>
+    <ion-icon *ngIf="cantItems != 0" (click)="facturar()" slot="end" name="cash" color="success"
+      style="margin-right: 3%; width: 50px; height: 25px;"></ion-icon>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <div *ngIf="itemsCarrito.length<=0" style="text-align: center;">
+    <ion-label  style="text-align: center; padding-bottom: 50%;">
+      <h1 style="padding-top: 50%;"> Su carrito está vacío </h1> <br>
+      <h1> ¡Ir a la sección de productos para agregar! </h1> <br>
+      <img src="https://cdn-icons-png.flaticon.com/512/2038/2038854.png"
+        style="padding-left: 25%; padding-right: 25%;">
+    </ion-label>
+  </div>
   <ion-grid *ngFor="let item of itemsCarrito; let i = index">
     <ion-row style="text-align: center;" justify-content-center>
       <ion-col padding size-xs="12" size-sm="12" size-md="12" size-lg="12" align-self-stretch>
@@ -58,5 +68,7 @@
     </ion-row>
   </ion-grid>
 
-
+  <div style="text-align: center;">
+    <ion-button *ngIf="itemsCarrito.length>0" (click)="vaciar()" color="danger">VACIAR CARRITO</ion-button>
+  </div>
 </ion-content>
