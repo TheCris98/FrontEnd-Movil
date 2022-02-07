@@ -9,16 +9,18 @@ import { AuthGuard } from './security/auth.guard';
 //   {path: 'carrito',loadChildren: () => import('./paginas/carrito/carrito.module').then( m => m.CarritoPageModule)},
 //   {path: 'dashboard', canActivate: [AuthGuard], loadChildren: () => import('./components/dashboard/dashboard.module').then( m => m.DashboardPageModule)},
 //   {path:'**',redirectTo:'login',pathMatch:'full'},
-  
+
 // ];
 
 //Si se hace de esta manera, se pone condicion en el dashboard para que no entre
 const routes: Routes = [
-  {path: '',loadChildren: () => import('../app/components/dashboard/dashboard.module').then(m => m.DashboardPageModule)},
-  {path: 'carrito', canActivate: [AuthGuard],loadChildren: () => import('./paginas/carrito/carrito.module').then( m => m.CarritoPageModule)},
-  {path: 'login', loadChildren: () => import('./components/login/login.module').then( m => m.LoginPageModule)},
-  {path: 'register', loadChildren: () => import('./components/register/register.module').then( m => m.RegisterPageModule)},
-  {path:'**',redirectTo:'login',pathMatch:'full'},
+  
+  { path: '', canActivate: [AuthGuard],loadChildren: () => import('../app/components/dashboard/dashboard.module').then(m => m.DashboardPageModule) },
+  { path: 'dashboard', canActivate: [AuthGuard],loadChildren: () => import('../app/components/dashboard/dashboard.module').then(m => m.DashboardPageModule) },
+  { path: 'carrito', canActivate: [AuthGuard], loadChildren: () => import('./paginas/carrito/carrito.module').then(m => m.CarritoPageModule) },
+  { path: 'login', loadChildren: () => import('./components/login/login.module').then(m => m.LoginPageModule) },
+  { path: 'register', loadChildren: () => import('./components/register/register.module').then(m => m.RegisterPageModule) },
+  { path: '**', redirectTo: 'login', pathMatch: 'full' }
   
 ];
 

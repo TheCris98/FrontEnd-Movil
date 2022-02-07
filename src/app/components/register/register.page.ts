@@ -41,6 +41,40 @@ export class RegisterPage implements OnInit {
       this.focused = false;
     }
   }
+  onBlurCedula(event: any) {
+    const value = event.target.value;
+
+    if (!value) {
+      this.focused = false;
+      return;
+    }
+    this._clienteService.getCliente(this.form.value.cedCli).subscribe(data => {
+      this.llenarCamposAuto(data);
+    }, error => {
+      this.resetCamposAuto();
+    }
+    )
+  }
+
+  llenarCamposAuto(data: any) {
+    this.form.patchValue({
+      nomCli: data.nomCli,
+      apeCli: data.apeCli,
+      dirCli: data.dirCli,
+      telCli: data.telCli
+    })
+  }
+
+  resetCamposAuto() {
+    this.form.patchValue({
+      nomCli: "",
+      apeCli: "",
+      dirCli: "",
+      telCli:""
+    })
+  }
+
+
 
   guardar() {
 
@@ -55,7 +89,12 @@ export class RegisterPage implements OnInit {
     };
 
     this._clienteService.saveCliente(cliente)
-      .subscribe(data => {
+      .subscribe(async data => {
+        const toast = await this.toastController.create({
+          message: "Su cuenta se ha creado exitosamente",
+          duration: 2000
+        });
+        toast.present();
         this.router.navigate(['/login'])
       }, async error => {
         const toast = await this.toastController.create({

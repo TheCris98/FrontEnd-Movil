@@ -9,10 +9,14 @@ import { Cliente } from '../interfaces/cliente';
 })
 export class ClienteService {
 
-  private api = 'api/ClienteControlador/';
+  private api = 'api/RegistroControlador/';
 
 
   constructor(private http: HttpClient) { }
+
+  getCliente(cedula: any): Observable<any>{
+    return this.http.get(environment.urlGlobal+this.api+cedula);
+  }
 
   saveCliente(cliente: Cliente): Observable<Cliente> {
     return this.http.post<Cliente>(environment.urlGlobal + this.api,cliente);

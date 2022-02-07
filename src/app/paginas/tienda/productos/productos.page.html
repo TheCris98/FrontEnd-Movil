@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Carrito de Compras</ion-title>
+    <ion-title>Productos</ion-title>
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
@@ -8,7 +8,8 @@
 </ion-header>
 
 <ion-content>
-  <ion-grid>
+  <!-- Grid de prueba -->
+  <!-- <ion-grid>
     <ion-row style="text-align: center;" justify-content-center>
       <ion-col padding size-xs="12" size-sm="12" size-md="12" size-lg="12" align-self-stretch>
         <ion-card>
@@ -24,51 +25,58 @@
                 style="height: auto; width: auto; margin-top: auto; margin-bottom: auto; margin-left: 10px" />
             </ion-col>
             <ion-col style="margin-top: auto; margin-bottom: auto;">
-  
+
               <br>
-              <b> <span style="margin-left: 10px;">Precio: 10.00$</span></b> <br>
+              <b> <span style="margin-left: 10px;">{{"Precio: 10.00$"}}</span></b> <br>
               <br>
-              <b> <span style="margin-left: 10px;">Cantidad: 20</span></b>
-              <br>
-              <b> <span style="margin-left: 10px;">Total: {{ 20 * 10 }}</span></b>
-  
+              <b> <span style="margin-left: 10px;"> Cantidad: </span></b>
+              <input type="number" style="width: 100px;"><br>
+
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-button>Agregar al carrito</ion-button>
             </ion-col>
           </ion-row>
         </ion-card>
       </ion-col>
     </ion-row>
-  </ion-grid>
-  
-  
-  <ion-grid>
+  </ion-grid> -->
+
+
+  <ion-grid *ngFor="let element of listaProductos">
     <ion-row style="text-align: center;" justify-content-center>
       <ion-col padding size-xs="12" size-sm="12" size-md="12" size-lg="12" align-self-stretch>
         <ion-card>
           <ion-row style="text-align: center;">
             <ion-card-title
               style="text-align: center; margin-left: auto; margin-right: auto; margin-top: 10px; margin-bottom: 10px;">
-              Cheetos
+              {{element.nomPro}}
             </ion-card-title>
           </ion-row>
           <ion-row>
             <ion-col>
-              <img src="https://i.pinimg.com/originals/d4/7a/40/d47a4074b5f3222fd3cc85d1b96a178f.png"
+              <img src={{element.imgPro}}
                 style="height: auto; width: auto; margin-top: auto; margin-bottom: auto; margin-left: 10px" />
             </ion-col>
             <ion-col style="margin-top: auto; margin-bottom: auto;">
-  
+
               <br>
-              <b> <span style="margin-left: 10px;">Precio: 10 $</span></b> <br>
+              <b> <span style="margin-left: 10px;">Precio: {{ element.puPro | number:'1.2-2'}} $</span></b> <br>
               <br>
-              <b> <span style="margin-left: 10px;"> Cantidad: 15</span></b>
-              <br>
-              <b> <span style="margin-left: 10px;">Total: {{ 15 * 10 }}</span></b>
-  
+              <b> <span style="margin-left: 10px;"> Cantidad: </span></b>
+              <input type="number" style="width: 100px;"><br>
+
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-button>Agregar al carrito</ion-button>
             </ion-col>
           </ion-row>
         </ion-card>
       </ion-col>
     </ion-row>
   </ion-grid>
-
 </ion-content>

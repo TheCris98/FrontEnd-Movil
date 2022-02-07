@@ -7,16 +7,16 @@
 </ion-header>
 <ion-content>
 
-  <ion-card>
-    <ion-img src="https://static1.abc.es/media/bienestar/2021/09/27/tipos-de-carne-1-kWj--620x349@abc.jpg"></ion-img>
+  <ion-card (click)="abrirProductos(element.idCat)" *ngFor="let element of listaCategorias">
+    <ion-img src={{element.imgCat}}></ion-img>
     <div class="myOverlay">
       <ion-text>
-        <h1>Carnes</h1>
+        <h1>{{element.nomCat}}</h1>
       </ion-text>
     </div>
   </ion-card>
 
-  <ion-card>
+  <!-- <ion-card>
     <ion-img src="https://abasto.com/wp-content/uploads/2021/06/summer-candy-dulces-verano.jpg"></ion-img>
     <div class="myOverlay">
       <ion-text>
@@ -32,24 +32,6 @@
         <h1 class="texto">Bebidas</h1>
       </ion-text>
     </div>
-  </ion-card>
-
-  <!-- <ion-card>
-    <ion-card-header>
-      <ion-card-title>Carnes</ion-card-title>
-    </ion-card-header>
-    <ion-img src="https://static1.abc.es/media/bienestar/2021/09/27/tipos-de-carne-1-kWj--620x349@abc.jpg"></ion-img>
-  </ion-card>
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>Dulces</ion-card-title>
-    </ion-card-header>
-    <ion-img src="https://abasto.com/wp-content/uploads/2021/06/summer-candy-dulces-verano.jpg"></ion-img>
-  </ion-card>
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>Bebidas</ion-card-title>
-    </ion-card-header>
-    <ion-img src="https://thefoodtech.com/wp-content/uploads/2020/05/bebidas-no-alcoh%C3%B3licas.jpg"></ion-img>
   </ion-card> -->
+
 </ion-content>

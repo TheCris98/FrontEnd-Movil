@@ -13,6 +13,6 @@ export class CarritoPage implements OnInit {
   ngOnInit() {
   }
   salirCarrito(){
-    this.router.navigate([''])
+    this.router.navigate(['/dashboard'])
   }
 }

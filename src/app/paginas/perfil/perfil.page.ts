@@ -18,7 +18,6 @@ export class PerfilPage implements OnInit {
   logout() {
     console.log("Ha salido");
     this._loginService.logout();
-    window.location.reload();
   }
 
 }

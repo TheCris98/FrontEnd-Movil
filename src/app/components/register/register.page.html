@@ -6,7 +6,7 @@
   <form [formGroup]="form" (ngSubmit)="guardar()">
     <div class="form-field">
       <label [ngClass]="focused ? 'label-focused' : ''">Cédula</label>
-      <input formControlName="cedCli" type="number" (focus)="focused = true" (blur)="onBlur($event)" />
+      <input formControlName="cedCli" type="number" (focus)="focused = true" (blur)="onBlurCedula($event)" />
     </div>
     <div class="form-field">
       <label [ngClass]="focused ? 'label-focused' : ''">Contraseña</label>

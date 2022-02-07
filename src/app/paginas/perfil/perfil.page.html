@@ -25,7 +25,7 @@
     </ion-card-content>
   </ion-card>
   <ion-item>
-    <ion-label (click)="logout()">
+    <ion-label [routerLink]="['/login']" (click)="logout()">
       Cerrar Sesión
     </ion-label>
   </ion-item>

@@ -7,7 +7,8 @@ const routes: Routes = [
   {
     path: '',
     component: TiendaPage
-  }
+  },
+  {path: 'productos/:id',loadChildren: () => import('./productos/productos.module').then( m => m.ProductosPageModule)}
 ];
 
 @NgModule({

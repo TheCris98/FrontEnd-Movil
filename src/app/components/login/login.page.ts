@@ -30,6 +30,7 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
+    
   }
 
   onBlur(event: any) {

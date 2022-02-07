@@ -13,10 +13,6 @@ export class DashboardPage implements OnInit {
     private _loginService: LoginService,
     private router: Router
   ) {
-    if (!this._loginService.UsuarioData) {
-      this.router.navigate(['/login'])
-    }
-
   }
 
   ngOnInit() {
